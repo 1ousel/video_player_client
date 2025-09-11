@@ -475,7 +475,7 @@ background-color:#E0E0E0;
              <widget class="QStackedWidget" name="stackedWidget">
               <widget class="HomePageWidget" name="homePage"/>
               <widget class="QWidget" name="sysPage"/>
-              <widget class="QWidget" name="myPage"/>
+              <widget class="MyselfWidget" name="myPage"/>
              </widget>
             </item>
            </layout>
@@ -499,6 +499,12 @@ background-color:#E0E0E0;
    <class>HomePageWidget</class>
    <extends>QWidget</extends>
    <header location="global">homepagewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MyselfWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">myselfwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

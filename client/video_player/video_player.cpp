@@ -2,6 +2,7 @@
 #include "./ui_video_player.h"
 #include<QGraphicsDropShadowEffect>
 #include<QMouseEvent>
+#include"util.h"
 video_player::video_player(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::video_player)
@@ -21,9 +22,16 @@ video_player::~video_player()
 
 void video_player::onSwitchPage(int pageId)
 {
-    //qDebug()<<"pageId"<<pageId;
-    ui->stackedWidget->setCurrentIndex(pageId);
+    //此处有小bug，编号依次为0，1，2 homepage， syspage  ，myselfpage
+    LOG()<<"pageId"<<pageId;
+    //写死
     resetswitchBtnInfo(pageId);
+    //这个if等修好了就删除
+    if(pageId!=0)
+        pageId=pageId==1?2:1;
+    //
+    ui->stackedWidget->setCurrentIndex(pageId);
+
 }
 
 void video_player::connectSignalAndSlot()
@@ -139,3 +147,4 @@ void video_player::initUI()
     ui->sysPageBtn->setImageAndText(":/images/homePage/admin.png","系统",AdminPage);
 
 }
+
