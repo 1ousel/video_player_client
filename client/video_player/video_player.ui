@@ -473,9 +473,13 @@ background-color:#E0E0E0;
             </property>
             <item>
              <widget class="QStackedWidget" name="stackedWidget">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
               <widget class="HomePageWidget" name="homePage"/>
-              <widget class="QWidget" name="sysPage"/>
+              <widget class="AdminWidget" name="sysPage"/>
               <widget class="MyselfWidget" name="myPage"/>
+              <widget class="UploadVideoPage" name="uploadPage"/>
              </widget>
             </item>
            </layout>
@@ -505,6 +509,18 @@ background-color:#E0E0E0;
    <class>MyselfWidget</class>
    <extends>QWidget</extends>
    <header location="global">myselfwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>UploadVideoPage</class>
+   <extends>QWidget</extends>
+   <header location="global">uploadvideopage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">adminwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

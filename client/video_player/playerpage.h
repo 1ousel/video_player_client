@@ -28,6 +28,8 @@ private:
 
     void onSpeedBtnClicked();
 
+    void onLkeImageBtnClcked(); // 点赞
+
     void moveVolumeWindows(const QPoint& point);
 
     void movePlaySpeedWindows(const QPoint& point);

@@ -2,6 +2,7 @@
 #include "./ui_video_player.h"
 #include<QGraphicsDropShadowEffect>
 #include<QMouseEvent>
+#include"uploadvideopage.h"
 #include"util.h"
 video_player::video_player(QWidget *parent)
     : QWidget(parent)
@@ -13,7 +14,15 @@ video_player::video_player(QWidget *parent)
     initUI();
     connectSignalAndSlot();
 }
-
+// 初始化实例指针，并获取实例
+video_player* video_player::instance = nullptr;
+video_player *video_player::getInstance()
+{
+    if (instance == nullptr) {
+        instance = new video_player();
+    }
+    return instance;
+}
 
 video_player::~video_player()
 {
@@ -27,21 +36,36 @@ void video_player::onSwitchPage(int pageId)
     //写死
     resetswitchBtnInfo(pageId);
     //这个if等修好了就删除
-    if(pageId!=0)
+    if(pageId==1||pageId==2)
         pageId=pageId==1?2:1;
-    //
+
     ui->stackedWidget->setCurrentIndex(pageId);
 
 }
 
 void video_player::connectSignalAndSlot()
 {
+    //缩小按钮和关闭按钮
     connect(ui->quitBtn,&QPushButton::clicked,this,&QWidget::close);
     connect(ui->minBtn, &QPushButton::clicked, this, &QWidget::showMinimized);
 
+    //页面切换按钮
     connect(ui->homePageBtn,&PageSwitchButton::switchPage,this,&video_player::onSwitchPage);
     connect(ui->myPageBtn,&PageSwitchButton::switchPage,this,&video_player::onSwitchPage);
     connect(ui->sysPageBtn,&PageSwitchButton::switchPage,this,&video_player::onSwitchPage);
+    //上传视频按钮
+    // ????
+    connect(ui->myPage, &MyselfWidget::switchUploadVideoPage, this, [=](int pageId){
+        LOG()<<"切换到上传视频⻚⾯";
+        onSwitchPage(pageId);
+    });
+
+    // 视频上传页面切换到我的页面
+    connect(ui->uploadPage, &UploadVideoPage::switchMySelfPage, this, [=]
+            (int pageId){
+                onSwitchPage(pageId);
+            });
+
 }
 
 void video_player::resetswitchBtnInfo(int PageId)

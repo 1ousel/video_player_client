@@ -3,8 +3,10 @@
 #include<QFileDialog>
 #include"util.h"
 #include"videobox.h"
+#include"util.h"
 #include<QPainter>
 #include<QPainterPath>
+#include<video_player.h>
 #include<modifymyselfdialog.h>
 MyselfWidget::MyselfWidget(QWidget *parent)
     : QWidget(parent)
@@ -17,6 +19,25 @@ MyselfWidget::MyselfWidget(QWidget *parent)
 MyselfWidget::~MyselfWidget()
 {
     delete ui;
+}
+
+void MyselfWidget::uploadViewBtnClicked()
+{
+    // 1. 弹出打开文件对话框，让用户选择要上传的视频文件
+    QString videoFilePath = QFileDialog::getOpenFileName(nullptr, "上传视频",
+                                                         "",
+                                                         "Videos (*.mp4 *.rmvb *.avi *.mov)");
+        if(!videoFilePath.isEmpty()){
+        // 视频大小限制，上限为4G
+        QFileInfo fileInfo(videoFilePath);
+        int64_t fileSize = fileInfo.size();
+        LOG()<<fileSize;
+        if(fileSize > 4LL*1024*1024*1024){
+            LOG()<<"视频⽂件必须⼩于4G";
+            return;
+        }
+        emit switchUploadVideoPage(UploadPage);
+    }
 }
 
 // 读写文件操作.
@@ -114,11 +135,13 @@ void MyselfWidget::InitUi()
     //修改个人信息按钮槽函数
     connect(ui->settingBtn, &QPushButton::clicked, this,
             &MyselfWidget::on_settingBtn_clicked);
+    connect(ui->uploadVideoBtn,&QPushButton::clicked,this,
+           &MyselfWidget::uploadViewBtnClicked);
     //添加videoBox；
     for(int i=0;i<16;i++)
     {
-        VideoBox*video=new VideoBox();
-        ui->Layout->addWidget(video,i/4,i%4);
+        // VideoBox*video=new VideoBox();
+        // ui->Layout->addWidget(video,i/4,i%4);
     }
 }
 

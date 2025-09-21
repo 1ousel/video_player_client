@@ -30,6 +30,9 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 INCLUDE_DIRECTORIES(
   ${PROJECT_SOUCE_DIR}
@@ -64,10 +67,26 @@ else()
     avatarbutton.h avatarbutton.cpp
     modifymyselfdialog.h modifymyselfdialog.cpp modifymyselfdialog.ui
     newpassworddialog.h newpassworddialog.cpp newpassworddialog.ui
+    uploadvideopage.h uploadvideopage.cpp uploadvideopage.ui
+    adminwidget.h adminwidget.cpp adminwidget.ui
+    checktable.h checktable.cpp checktable.ui
+    roletable.h roletable.cpp roletable.ui
+    checktableitem.h checktableitem.cpp checktableitem.ui
+    roletableitem.h roletableitem.cpp roletableitem.ui
+    edituserdialog.h edituserdialog.cpp edituserdialog.ui
+    pagebutton.h pagebutton.cpp
+    paginator.h paginator.cpp
+    login.h login.cpp login.ui
+    toast.h toast.cpp
+
+
 
   )
 endif()
 
+target_link_libraries(video_player PRIVATE Qt6::Widgets)
+target_link_libraries(video_player PRIVATE Qt6::Widgets)
+target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)

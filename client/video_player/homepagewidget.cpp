@@ -120,7 +120,7 @@ void HomePageWidget::initRefreshAndTopBtn()
 
 void HomePageWidget::initVideos()
 {
-    for(int i=0;i<16;i++)
+    for(int i=0;i<2;i++)
     {
         VideoBox*video=new VideoBox(this);
 

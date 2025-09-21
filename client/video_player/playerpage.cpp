@@ -1,6 +1,9 @@
 #include "playerpage.h"
 #include "ui_playerpage.h"
 #include"util.h"
+#include"login.h"
+#include"toast.h"
+#include<time.h>
 PlayerPage::PlayerPage(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PlayerPage)
@@ -19,6 +22,8 @@ PlayerPage::PlayerPage(QWidget *parent)
     connect(ui->volumeBtn,&QPushButton::clicked,this,&PlayerPage::onVolumeBtnClicked);
     //倍数调节按钮
     connect(ui->speedBtn,&QPushButton::clicked,this,&PlayerPage::onSpeedBtnClicked);
+    // 点赞
+    connect(ui->likeImageBtn, &QPushButton::clicked, this,&PlayerPage::onLkeImageBtnClcked);
 }
 
 PlayerPage::~PlayerPage()
@@ -67,6 +72,15 @@ void PlayerPage::onSpeedBtnClicked()
 {
     movePlaySpeedWindows(mapToGlobal(QPoint(0, 0)));
     playSpeed->show();
+}
+
+void PlayerPage::onLkeImageBtnClcked()
+{
+    // 检测用户是否登录，登录时才能点赞
+    Login* login = new Login();
+    login->show();
+
+    Toast::showMessage("提示");
 }
 
 void PlayerPage::moveVolumeWindows(const QPoint &point)
