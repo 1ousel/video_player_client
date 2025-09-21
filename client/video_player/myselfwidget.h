@@ -15,6 +15,9 @@ public:
     explicit MyselfWidget(QWidget *parent = nullptr);
     ~MyselfWidget();
 
+    // 上传视频按钮槽函数
+    void uploadViewBtnClicked();
+
     // 点击上传头像按钮
     void uploadAvatarBtnClicked();
 
@@ -22,6 +25,10 @@ public:
 private slots:
     void on_settingBtn_clicked();
 
+signals:
+    // 切换到上传视频窗口
+    void switchUploadVideoPage(int pageIndex);
+    // ...
 private:
     Ui::MyselfWidget *ui;
 };

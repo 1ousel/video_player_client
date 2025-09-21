@@ -239,6 +239,9 @@ padding-left: 10px;
 }</string>
    </property>
    <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
     <string>视频用户</string>
    </property>
   </widget>
