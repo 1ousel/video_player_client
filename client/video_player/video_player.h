@@ -19,6 +19,7 @@ public:
     ~video_player();
 private slots:
     void  onSwitchPage(int pageId);
+
 private:
 
     //初始化UI函数

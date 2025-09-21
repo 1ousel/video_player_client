@@ -28,6 +28,8 @@ find_package(Qt6 COMPONENTS Widgets REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 INCLUDE_DIRECTORIES(
   ${PROJECT_SOUCE_DIR}
@@ -53,9 +55,21 @@ else()
     homepagewidget.h homepagewidget.cpp homepagewidget.ui
     searchlineedit.h searchlineedit.cpp
     videobox.h videobox.cpp videobox.ui
+    playerpage.h playerpage.cpp playerpage.ui
+    playslider.h playslider.cpp playslider.ui
+    volume.h volume.cpp volume.ui
+    playspeed.h playspeed.cpp playspeed.ui
+    barrageedit.h barrageedit.cpp
+    myselfwidget.h myselfwidget.cpp myselfwidget.ui
+    avatarbutton.h avatarbutton.cpp
+    modifymyselfdialog.h modifymyselfdialog.cpp modifymyselfdialog.ui
+    newpassworddialog.h newpassworddialog.cpp newpassworddialog.ui
+
   )
 endif()
 
+target_link_libraries(video_player PRIVATE Qt6::Widgets)
+target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)
 target_link_libraries(video_player PRIVATE Qt6::Widgets)
